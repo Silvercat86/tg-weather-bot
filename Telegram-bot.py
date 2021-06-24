@@ -42,6 +42,7 @@ def weather(update, context):
 weather_handler = MessageHandler(Filters.text & (~Filters.command), weather)
 dispatcher.add_handler(weather_handler)
 
+print('Hello')
 
 updater.start_polling()#запуск пограммы
 updater.idle()#что бы продолжало работать вечно(зацикливает)
