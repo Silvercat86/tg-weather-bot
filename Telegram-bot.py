@@ -1,7 +1,5 @@
 import requests
-from telegram import Contact
 from telegram.ext import CommandHandler,Updater, dispatcher,MessageHandler, Filters
-from typing import Text
 
 #  ---------------------------------------
 #  response= requests.get('https://api.ipify.org')#получает данные с заданного сайта
