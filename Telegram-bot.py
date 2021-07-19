@@ -1,3 +1,4 @@
+import os
 import requests
 from telegram.ext import CommandHandler,Updater, dispatcher,MessageHandler, Filters
 
@@ -11,10 +12,13 @@ from telegram.ext import CommandHandler,Updater, dispatcher,MessageHandler, Filt
 #  print(data['result'][1]['message']['text'])#путь значений в словаре
 
 #  Бот в телеге----------------------------------------------
+BOT_TOKEN=os.getenv('BOT_TOKEN')
 
-updater = Updater(token='1800458602:AAHWEOruS7iy4980Ul0rBYyMzqkrI4rYkQE',use_context=True)  # проверяет если что нового в памяти бота'''
+updater = Updater(token='BOT_TOKEN',use_context=True)  # проверяет если что нового в памяти бота'''
 
 dispatcher = updater.dispatcher#управляет командами
+
+
 #  ------------------------
 
 
@@ -32,9 +36,6 @@ dispatcher.add_handler(start_handler)#задает название команд
 def weather(update, context):
     city = update.message.text
     w = requests.get(f'https://wttr.in/{city}?format=2')
-    print(w)
-    data=requests.get('https://api.telegram.org/bot1800458602:AAHWEOruS7iy4980Ul0rBYyMzqkrI4rYkQE/getUpdates')
-    print(data.json())
     context.bot.send_message(chat_id=update.effective_chat.id, text=w.text)# отправляет тоже сообщение что и человек
 
 
